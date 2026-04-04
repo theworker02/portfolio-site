@@ -1,4 +1,4 @@
-import { SITE_CONFIG } from '../../config/site.ts';
+import { SITE_CONFIG } from '../../../config/site.ts';
 
 const configuredGitHubHandle = import.meta.env.VITE_GITHUB_HANDLE?.trim();
 const GITHUB_HANDLE = configuredGitHubHandle || SITE_CONFIG.username;

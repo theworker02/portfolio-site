@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { sendContactMessage } from '../api/contact';
-import { SITE_CONFIG } from '../../config/site.ts';
+import { sendContactMessage } from '../api/contact.js';
+import { SITE_CONFIG } from '../../../config/site.ts';
 
 export default function Contact({ profile }) {
   const [formState, setFormState] = useState({

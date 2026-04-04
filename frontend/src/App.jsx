@@ -2,22 +2,22 @@ import { Analytics } from '@vercel/analytics/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
-import RouteErrorBoundary from './components/RouteErrorBoundary';
-import RouteLoader from './components/RouteLoader';
-import { usePortfolioData } from './hooks/usePortfolioData';
+import RouteErrorBoundary from './components/RouteErrorBoundary.jsx';
+import RouteLoader from './components/RouteLoader.jsx';
+import { usePortfolioData } from './hooks/usePortfolioData.js';
 import { motionTokens } from './styles/tokens.ts';
 
-const Home = lazy(() => import('./pages/Home'));
-const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
-const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage'));
-const DemoPage = lazy(() => import('./pages/DemoPage'));
-const DocsPage = lazy(() => import('./pages/DocsPage'));
-const AboutPage = lazy(() => import('./pages/AboutPage'));
-const SkillsPage = lazy(() => import('./pages/SkillsPage'));
-const GitHubPage = lazy(() => import('./pages/GitHubPage'));
-const DashboardPage = lazy(() => import('./pages/DashboardPage'));
-const ContactPage = lazy(() => import('./pages/ContactPage'));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const Home = lazy(() => import('./pages/Home.jsx'));
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage.jsx'));
+const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage.jsx'));
+const DemoPage = lazy(() => import('./pages/DemoPage.jsx'));
+const DocsPage = lazy(() => import('./pages/DocsPage.jsx'));
+const AboutPage = lazy(() => import('./pages/AboutPage.jsx'));
+const SkillsPage = lazy(() => import('./pages/SkillsPage.jsx'));
+const GitHubPage = lazy(() => import('./pages/GitHubPage.jsx'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage.jsx'));
+const ContactPage = lazy(() => import('./pages/ContactPage.jsx'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'));
 
 function ScrollManager() {
   const location = useLocation();

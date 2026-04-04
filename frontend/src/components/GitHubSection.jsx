@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { startTransition, useDeferredValue, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { trackClick } from '../api/analytics';
-import { getCategoryMeta, getProjectDemoPath, getProjectPath, getTechCategory, sortRepositories } from '../api/github';
+import { trackClick } from '../api/analytics.js';
+import { getCategoryMeta, getProjectDemoPath, getProjectPath, getTechCategory, sortRepositories } from '../api/github.js';
 import { motionTokens } from '../styles/tokens.ts';
 
 const sortOptions = [

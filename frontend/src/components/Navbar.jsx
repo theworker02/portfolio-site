@@ -1,7 +1,7 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import BrandMark from './BrandMark';
+import BrandMark from './BrandMark.jsx';
 import { motionTokens } from '../styles/tokens.ts';
 
 const navLinks = [

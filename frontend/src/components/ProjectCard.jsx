@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { trackClick } from '../api/analytics';
-import { getCategoryMeta, getProjectDemoPath, getProjectPath, getTechCategory } from '../api/github';
+import { trackClick } from '../api/analytics.js';
+import { getCategoryMeta, getProjectDemoPath, getProjectPath, getTechCategory } from '../api/github.js';
 import { motionTokens } from '../styles/tokens.ts';
 
 function formatDate(dateString) {

@@ -1,0 +1,13 @@
+{
+  "name": "portfolio-backend",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.x",
+    "nodemailer": "^6.x",
+    "cors": "^2.x",
+    "dotenv": "^16.x"
+  }
+}

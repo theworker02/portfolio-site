@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import Footer from './Footer';
-import Navbar from './Navbar';
+import Footer from './Footer.jsx';
+import Navbar from './Navbar.jsx';
 import { motionTokens } from '../styles/tokens.ts';
 
 export default function AppLayout({ profile, children }) {
