@@ -1,0 +1,39 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "scripts": {
+    "prebuild": "node ./scripts/generate-sitemap.mjs",
+    "dev": "node ./node_modules/vite/bin/vite.js",
+    "dev:frontend": "node ./node_modules/vite/bin/vite.js",
+    "dev:backend": "node --watch ./server/app.js",
+    "dev:full": "node ./scripts/dev-full.mjs",
+    "build": "node ./node_modules/vite/bin/vite.js build",
+    "preview": "node ./node_modules/vite/bin/vite.js preview",
+    "start:backend": "node ./server/app.js",
+    "verify:analytics": "node ./scripts/verify-analytics.mjs"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.0",
+    "express": "^5.2.1",
+    "framer-motion": "^12.23.12",
+    "nodemailer": "^8.0.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^6.30.1",
+    "sql.js": "^1.14.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "vite": "^5.4.18"
+  }
+}
