@@ -182,16 +182,7 @@ VITE_SITE_URL=https://your-frontend-domain.example
 1. Deploy the same repo as a Node service.
 2. Use `npm install` as the install command.
 3. Use `npm run start:backend` as the start command.
-4. Add these environment variables:
 
-```bash
-ANALYTICS_PORT=8787
-ANALYTICS_DB_PATH=./server/data/analytics.sqlite
-FRONTEND_ORIGIN=https://your-frontend-domain.example
-EMAIL_USER=matthewlooney5@gmail.com
-EMAIL_PASS=YOUR_GMAIL_APP_PASSWORD
-CONTACT_TO_EMAIL=matthewlooney5@gmail.com
-```
 
 5. Attach persistent storage if you want analytics data to survive redeploys.
 
