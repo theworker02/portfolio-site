@@ -208,6 +208,10 @@ FRONTEND_ORIGIN=https://your-frontend-domain.example
 
 ![Dashboard preview](frontend/public/images/dashboard-preview.svg)
 
+## Live Website
+
+[Visit My Portfolio](https://portfolio-site-tau-amber.vercel.app/)
+
 ## Verification Checklist
 
 - Frontend is isolated inside `frontend/`
