@@ -30,19 +30,19 @@ const docsSections = [
 const commandBlocks = [
   {
     label: 'Frontend dev',
-    commands: ['npm install', 'npm run dev'],
+    commands: ['cd frontend', 'npm install', 'npm run dev'],
   },
   {
     label: 'Backend dev',
-    commands: ['npm install', 'npm run dev:backend'],
-  },
-  {
-    label: 'Run both',
-    commands: ['npm install', 'npm run dev:full'],
+    commands: ['cd backend', 'npm install', 'npm start'],
   },
   {
     label: 'Production build',
-    commands: ['npm run build', 'npm run preview'],
+    commands: ['cd frontend', 'npm run build', 'npm run preview'],
+  },
+  {
+    label: 'Deployment flow',
+    commands: ['Deploy /frontend to Vercel', 'Deploy /backend to Railway or Render'],
   },
 ];
 

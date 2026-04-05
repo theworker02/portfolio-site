@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { SITE_CONFIG } from '../../../config/site.ts';
+import { SITE_CONFIG } from '../config/site.ts';
 
 function ensureMeta(selector, attribute, value) {
   if (typeof document === 'undefined') {

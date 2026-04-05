@@ -1,4 +1,4 @@
-const configuredApiBase = import.meta.env.VITE_ANALYTICS_API_URL?.trim();
+const configuredApiBase = import.meta.env.VITE_API_URL?.trim();
 
 export function getApiBaseUrl() {
   if (configuredApiBase) {
@@ -10,7 +10,7 @@ export function getApiBaseUrl() {
       window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
     if (isLocalhost) {
-      return 'http://127.0.0.1:8787';
+      return 'http://localhost:5000';
     }
   }
 
@@ -98,7 +98,7 @@ export async function fetchStats() {
 
   if (!url) {
     throw new Error(
-      'Analytics API is not configured. Set VITE_ANALYTICS_API_URL for production deployment.',
+      'Analytics API is not configured. Set VITE_API_URL for production deployment.',
     );
   }
 

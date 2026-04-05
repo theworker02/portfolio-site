@@ -1,53 +1,65 @@
 # theworker02 Portfolio
 
-![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite&logoColor=white)
-![React](https://img.shields.io/badge/React-19-20232A?logo=react&logoColor=61DAFB)
-![Express](https://img.shields.io/badge/Express-5-111111?logo=express&logoColor=white)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-0F172A?logo=framer&logoColor=white)
-![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel&logoColor=white)
-![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+![Frontend](https://img.shields.io/badge/frontend-Vite%20%2B%20React-0f172a?logo=vite&logoColor=646CFF)
+![Backend](https://img.shields.io/badge/backend-Express-111111?logo=express&logoColor=white)
+![Analytics](https://img.shields.io/badge/analytics-Custom%20Dashboard-2563eb)
+![Contact](https://img.shields.io/badge/contact-Nodemailer-16a34a)
+![Deploy](https://img.shields.io/badge/deploy-Vercel%20%2B%20Railway-black?logo=vercel&logoColor=white)
 
-Production-ready developer portfolio for `theworker02`, built with React, Vite, Tailwind CSS, Framer Motion, a live GitHub project feed, a custom analytics backend, and a real contact email flow.
+Production-ready portfolio for `theworker02`, split into a standalone Vite frontend and a standalone Express backend. The frontend handles the public portfolio, GitHub-driven project showcase, demos, and dashboard UI. The backend handles analytics tracking and contact-form email delivery.
 
-## Overview
+## Project Structure
 
-This repo contains:
+```text
+portfolio/
+├── frontend/
+│   ├── .env
+│   ├── .env.example
+│   ├── index.html
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── public/
+│   ├── src/
+│   ├── tailwind.config.js
+│   ├── vercel.json
+│   └── vite.config.js
+├── backend/
+│   ├── .env
+│   ├── .env.example
+│   ├── package.json
+│   └── server.js
+├── README.md
+└── .gitignore
+```
 
-- A multi-page React frontend with animated routing and GitHub-powered project data
-- An Express backend for analytics and contact form delivery
-- A live dashboard for portfolio usage stats
-- Build-time SEO helpers like `sitemap.xml` and `robots.txt`
-- Deployment-ready frontend and backend configuration
+## What Changed
 
-## Preview
+- Frontend and backend are now fully separated.
+- Vercel-specific routing now lives in `frontend/vercel.json`.
+- Backend logic no longer depends on the old root `/server` folder.
+- Frontend environment usage is normalized around `VITE_API_URL`.
+- Root-level mixed build/server artifacts were removed.
 
-![Portfolio overview](public/images/portfolio-preview.svg)
+## Frontend
 
-![Analytics dashboard](public/images/dashboard-preview.svg)
+Location: [frontend](frontend)
 
-## Features
+Tech:
 
-- Multi-page routed portfolio with polished transitions
-- Dynamic GitHub repository ingestion and sorting
-- Project detail pages with demo links and local setup instructions
-- Contact form that posts to a real backend email endpoint
-- Analytics tracking for page views, clicks, and demo launches
-- Live dashboard backed by persisted analytics data
-- Responsive layout for desktop, tablet, and mobile
-- Vercel-ready SPA routing via `vercel.json`
-- Production build hardening with minification and disabled source maps
+- React
+- Vite
+- React Router
+- Tailwind CSS
+- Framer Motion
+- Vercel Analytics
 
-## Tech Stack
+Key frontend entry points:
 
-- Frontend: React, Vite, React Router, Tailwind CSS, Framer Motion
-- Backend: Express, Nodemailer, CORS, dotenv
-- Persistence: `sql.js` with SQLite-style file storage for analytics
-- External APIs: GitHub REST API
-- Deployment targets: Vercel for frontend, Railway or Render for backend
+- [frontend/src/main.jsx](frontend/src/main.jsx)
+- [frontend/src/App.jsx](frontend/src/App.jsx)
+- [frontend/src/config/site.ts](frontend/src/config/site.ts)
 
-## Routes
-
-### Frontend routes
+Frontend routes:
 
 - `/`
 - `/projects`
@@ -61,7 +73,20 @@ This repo contains:
 - `/contact`
 - `/404`
 
-### Backend routes
+## Backend
+
+Location: [backend](backend)
+
+Tech:
+
+- Node.js
+- Express
+- Nodemailer
+- CORS
+- dotenv
+- sql.js
+
+Backend endpoints:
 
 - `GET /health`
 - `POST /api/view`
@@ -69,188 +94,126 @@ This repo contains:
 - `GET /api/stats`
 - `POST /api/contact`
 
-## Environment Setup
+The backend stores analytics events in a lightweight SQLite-style file under `backend/data/analytics.sqlite` at runtime.
 
-Copy the example file:
+## Environment Variables
 
-'''bash
-cp .env.example .env
+Frontend: [frontend/.env.example](frontend/.env.example)
 
+```bash
+VITE_API_URL=http://localhost:5000
+VITE_GITHUB_HANDLE=theworker02
+```
 
-### Important notes
+Backend: [backend/.env.example](backend/.env.example)
 
-- `EMAIL_PASS` must be a Gmail App Password, not your normal Gmail password.
-- `VITE_ANALYTICS_API_URL` should point at the deployed backend in production.
-- `FRONTEND_ORIGIN` should match your deployed frontend origin for CORS.
+```bash
+EMAIL_USER=matthewlooney5@gmail.com
+EMAIL_PASS=your_gmail_app_password
+PORT=5000
+```
+
+Important:
+
+- `EMAIL_PASS` must be a Gmail App Password, not a normal Gmail password.
+- Do not expose backend secrets in the frontend.
+- If a real app password was ever committed locally, rotate it before deployment.
 
 ## Local Development
 
-### 1. Install dependencies
+### Run the frontend
 
 ```bash
+cd frontend
 npm install
-```
-
-### 2. Start the frontend
-
-```bash
 npm run dev
 ```
 
-### 3. Start the backend in a second terminal
+### Run the backend
 
 ```bash
-npm run dev:backend
+cd backend
+npm install
+npm start
 ```
 
-### 4. Or run both together
+### Local connection
 
-```bash
-npm run dev:full
+The frontend talks to the backend through:
+
+```js
+fetch(`${import.meta.env.VITE_API_URL}/api/contact`)
 ```
 
-## Available Scripts
-
-- `npm run dev` - start the Vite frontend
-- `npm run dev:frontend` - same as `npm run dev`
-- `npm run dev:backend` - start the Express backend with file watching
-- `npm run dev:full` - start frontend and backend together
-- `npm run build` - regenerate SEO files and create the production frontend build
-- `npm run preview` - preview the production frontend build
-- `npm run start:backend` - run the backend in production mode
-- `npm run verify:analytics` - run the backend analytics self-test
-
-## Contact System
-
-The contact form in the portfolio posts to `POST /api/contact`.
-
-The backend:
-
-- Validates `name`, `email`, and `message`
-- Rejects invalid or empty submissions
-- Applies simple in-memory rate limiting
-- Sends emails through Gmail SMTP using Nodemailer
-- Delivers messages to `matthewlooney5@gmail.com`
-
-### Contact payload
-
-```json
-{
-  "name": "Your Name",
-  "email": "you@example.com",
-  "message": "Your message here."
-}
-```
-
-## Analytics System
-
-The analytics backend stores usage events in a local SQLite-style database file and exposes summary data for the dashboard.
-
-Tracked events:
-
-- Page views
-- Project clicks
-- Demo launches
-
-Returned dashboard data includes:
-
-- Total site visits
-- Total project interactions
-- Demo counts
-- Top pages
-- Top projects
-- Recent events
+The same base URL is also used for analytics requests.
 
 ## Deployment
 
 ### Frontend on Vercel
 
-1. Import the repo into Vercel.
-2. Use `npm run build` as the build command.
-3. Use `dist` as the output directory.
-4. Keep `vercel.json` in place so route refreshes resolve to `index.html`.
-5. Add these environment variables in Vercel:
+- Root directory: `frontend`
+- Install command: `npm install`
+- Build command: `npm run build`
+- Output directory: `dist`
+
+Vercel SPA routing is handled by [frontend/vercel.json](frontend/vercel.json):
+
+```json
+{
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
+```
+
+Recommended frontend production env:
 
 ```bash
+VITE_API_URL=https://your-backend-domain.example
 VITE_GITHUB_HANDLE=theworker02
-VITE_ANALYTICS_API_URL=https://your-backend-domain.example
-VITE_SITE_URL=https://your-frontend-domain.example
 ```
 
 ### Backend on Railway or Render
 
-1. Deploy the same repo as a Node service.
-2. Use `npm install` as the install command.
-3. Use `npm run start:backend` as the start command.
+- Root directory: `backend`
+- Install command: `npm install`
+- Start command: `npm start`
 
-
-5. Attach persistent storage if you want analytics data to survive redeploys.
-
-## Project Structure
-
-```text
-backend/
-  server.js
-config/
-  site.ts
-public/
-  favicon.ico
-  favicon.svg
-  images/
-scripts/
-  dev-full.mjs
-  generate-sitemap.mjs
-  verify-analytics.mjs
-server/
-  app.js
-  database.js
-src/
-  api/
-  components/
-  data/
-  hooks/
-  pages/
-  styles/
-```
-
-## Current Status
-
-This repo currently includes:
-
-- GitHub-backed project catalog
-- Sticky multi-page portfolio shell
-- Working backend contact endpoint
-- Working analytics pipeline
-- Clean Vercel deployment setup
-
-This repo does not currently include:
-
-- A snapshot/version history UI
-- A dedicated backend database server like Postgres
-- Automated test coverage beyond the analytics verification script
-
-## Verification
-
-The project has been verified with:
+Recommended backend env:
 
 ```bash
-npm run build
-npm run verify:analytics
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASS=your_gmail_app_password
+PORT=5000
+FRONTEND_ORIGIN=https://your-frontend-domain.example
 ```
 
-Contact endpoint verification status:
+## Features
 
-- Validation responses are working
-- Email delivery requires valid `EMAIL_USER` and `EMAIL_PASS` environment variables
+- Apple-inspired multi-page portfolio UI
+- GitHub-powered project data and project detail pages
+- Dedicated demo routes
+- Working contact form backend with Nodemailer
+- Analytics tracking for views, clicks, and demo launches
+- Live dashboard powered by backend stats
+- Lazy-loaded routes and production minification
+- Vercel-compatible SPA routing
 
-## Notes
+## Previews
 
-- The frontend remains JavaScript-based by design; the repo was not force-migrated to full TypeScript.
-- `backend/server.js` is a thin wrapper around `server/app.js` for compatibility and deployment flexibility.
-- `sql.js` is used to keep analytics persistence lightweight and cross-platform.
+![Portfolio preview](frontend/public/images/portfolio-preview.svg)
 
-## Documentation
+![Dashboard preview](frontend/public/images/dashboard-preview.svg)
 
-- [Contributing Guide](CONTRIBUTING.md)
-- [Changelog](CHANGELOG.md)
-- [MIT License](LICENSE)
+## Verification Checklist
+
+- Frontend is isolated inside `frontend/`
+- Backend is isolated inside `backend/`
+- No mixed root `src`, `index.html`, or server files remain
+- Frontend uses `VITE_API_URL`
+- Backend owns `/api/contact`, `/api/view`, `/api/click`, and `/api/stats`
+- Vercel config lives in `frontend/vercel.json`
+

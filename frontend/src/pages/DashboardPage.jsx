@@ -82,8 +82,8 @@ export default function DashboardPage({ portfolioData }) {
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-8 text-white/72">{error}</p>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-white/56">
-              Start the backend with `npm run dev:backend` locally, or configure
-              `VITE_ANALYTICS_API_URL` for production deployment.
+              Start the backend from `/backend` with `npm start`, or configure `VITE_API_URL` for
+              production deployment.
             </p>
           </div>
         </section>

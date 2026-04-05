@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { SITE_CONFIG } from '../../../config/site.ts';
+import { SITE_CONFIG } from '../config/site.ts';
 import BrandMark from './BrandMark.jsx';
 import { motionTokens } from '../styles/tokens.ts';
 

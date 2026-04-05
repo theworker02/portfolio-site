@@ -5,7 +5,7 @@ import {
   projectCatalogByRepoName,
   projectCategoryMeta,
 } from '../data/projects.ts';
-import { SITE_CONFIG } from '../../../config/site.ts';
+import { SITE_CONFIG } from '../config/site.ts';
 
 const configuredGitHubHandle = import.meta.env.VITE_GITHUB_HANDLE?.trim();
 const GITHUB_HANDLE = configuredGitHubHandle || portfolioProfile.handle || SITE_CONFIG.username;
